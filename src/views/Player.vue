@@ -3,11 +3,11 @@
     <v-flex xs12 sm10 offset-sm my-5>
       <v-card color="#445064">
         <v-card-title>
-          {{ file.name }} - {{ file.size | size }} - Peers {{ torrentInfo.peers }}
+          {{ file.name }} - {{ file.size | size }} - 链接 {{ torrentInfo.peers }}
           <bookmark-button
             v-if="file"
             :bookmarkInfo="{
-            name: `${file.name} - Video Player`,
+            name: `${file.name} - 视频播放`,
             id: 'player::' + torrentInfo.infoHash + '::' + file.path,
             url: shareURL
           }"
@@ -37,7 +37,7 @@
               <v-card color="#2b313b">
                 <v-card-text>
                   <v-text-field
-                    label="Share Video"
+                    label="分享视频"
                     class="mt-2"
                     readonly
                     prepend-icon="share"
@@ -52,8 +52,8 @@
 
                   <share-buttons
                     :url="shareURL"
-                    :title="`Watch this video '${file.name}'`"
-                    :desc="`Watch this video '${file.name}'`"
+                    :title="`观看此视频 '${file.name}'`"
+                    :desc="`观看此视频 '${file.name}'`"
                   />
                 </v-card-text>
               </v-card>
@@ -89,22 +89,22 @@
             <v-expansion-panel-content style="background: #20252c !important">
               <template v-slot:header>
                 <div class="title">
-                  <v-icon left>fas fa-closed-captioning</v-icon>Captions Options
+                  <v-icon left>fas fa-closed-captioning</v-icon>字幕选项
                 </div>
               </template>
               <v-card color="#2b313b">
                 <v-card-text class="text-xs-center">
                   <v-flex class="my-4">
-                    <h1 class="title mb-3">Caption Size [ {{ captionsFontSize }} ]</h1>
+                    <h1 class="title mb-3">字幕大小 [ {{ captionsFontSize }} ]</h1>
                     <v-btn color="green" @click="adjustCaptionsSize(1)">
-                      <v-icon left small>fas fa-search-plus</v-icon>Increase
+                      <v-icon left small>fas fa-search-plus</v-icon>增加
                     </v-btn>
                     <v-btn color="red" @click="adjustCaptionsSize(-1)">
-                      <v-icon left small>fas fa-search-minus</v-icon>Decrease
+                      <v-icon left small>fas fa-search-minus</v-icon>减少
                     </v-btn>
                   </v-flex>
                   <v-flex class="my-4">
-                    <h1 class="title mb-3">Upload Caption</h1>
+                    <h1 class="title mb-3">上传字幕</h1>
                     <input
                       type="file"
                       placeholder="Upload Caption"
@@ -113,17 +113,17 @@
                     />
                   </v-flex>
                   <v-flex class="my-4">
-                    <h1 class="title mb-3">Load URL Caption</h1>
+                    <h1 class="title mb-3">加载URL标题</h1>
                     <v-text-field type="url" label="Load Caption" v-model="loadCaptionInfo">
                       <template v-slot:append>
                         <div>
-                          <v-btn @click="loadCaption" color="blue">Load</v-btn>
+                          <v-btn @click="loadCaption" color="blue">加载</v-btn>
                         </div>
                       </template>
                     </v-text-field>
                   </v-flex>
                   <v-flex class="my-4" v-if="player && captions.length">
-                    <h1 class="title mb-3">Fix caption timing</h1>
+                    <h1 class="title mb-3">修正字幕时间</h1>
                     <v-text-field
                       label="Caption Delay"
                       type="number"
@@ -131,11 +131,11 @@
                       min="0"
                       :max="player.duration"
                     />
-                    <v-btn color="blue" @click="timeA = player.currentTime">Caption appears here</v-btn>
+                    <v-btn color="blue" @click="timeA = player.currentTime">标题出现在这里</v-btn>
                     <v-btn
                       color="blue"
                       @click="timeB = player.currentTime"
-                    >Caption should appears here</v-btn>
+                    >标题应该出现在这里</v-btn>
                     <br />
                     <v-btn
                       color="green"
@@ -143,7 +143,7 @@
                     >Fix Caption Timing</v-btn>
                   </v-flex>
                   <v-flex v-if="captions.length">
-                    <h1 class="title">Loaded Captions</h1>
+                    <h1 class="title">载入字幕</h1>
                     <div v-for="(c, i) in captions" :key="i">
                       <a
                         :href="c.url"
@@ -222,11 +222,11 @@ export default {
     ...mapActions(["loadTorrentInfo"]),
     loadCaption() {
       loadURL({
-        label: prompt("Caption Name:", "Unknown") || "Unknown",
-        lang: prompt("Caption Language short code:", "en") || "",
+        label: prompt("字幕名称：", "Unknown") || "Unknown",
+        lang: prompt("字幕语言：", "en") || "",
         type: "url",
         originalData: this.loadCaptionInfo,
-        encoding: prompt("Caption Encoding:", "utf8") || null,
+        encoding: prompt("字幕编码：", "utf8") || null,
         data: this.loadCaptionInfo
       })
         .then(caption => this.captions.push(caption))
@@ -240,15 +240,15 @@ export default {
       if (!files.length) return;
       const file = files[0];
       if (file.type !== "application/x-subrip" && file.type !== "text/vtt")
-        return alert("Only .vtt and .srt subtitles are supported");
+        return alert("仅支持.vtt和.srt字幕");
       if (window.File && window.FileReader && window.FileList && window.Blob) {
         const reader = new FileReader();
         reader.onload = data => {
           loadText({
             label: file.name,
             type: "text",
-            lang: prompt("Caption Language short code:", "en") || "",
-            encoding: prompt("Caption Encoding:", "utf8") || null,
+            lang: prompt("字幕语言：", "en") || "",
+            encoding: prompt("字幕编码：", "utf8") || null,
             originalData: data.target.result,
             data: data.target.result
           }).then(caption => this.captions.push(caption));
@@ -257,7 +257,7 @@ export default {
       } else {
         this.Swal(
           "Oops!!",
-          "The File APIs are not fully supported in this browser.",
+          "此浏览器不完全支持文件API。",
           "error"
         );
       }
@@ -266,11 +266,11 @@ export default {
       const { fileIndex, $router, torrentInfo } = this;
       const ready = () => {
         this.$nextTick(() => this.setPlayer());
-        document.title = "Live Torrent - video player - " + this.file.name;
+        document.title = "绅士云播 - 视频播放 - " + this.file.name;
       };
 
       if (!fileIndex) {
-        // try to get playlist for future updates
+        // 尝试获取播放列表以供将来更新
         const playlist = torrentInfo.files.filter(
           f => f.type.startsWith("video") || f.type.startsWith("audio")
         );

@@ -56,8 +56,8 @@
           :url="
             `${hostURL}/search?q=${query}&p=${provider}&l=${limit}&c=${category}`
           "
-          :title="`Torrent search results for '${query}'`"
-          :desc="`See torrent search results for '${query}'`"
+          :title="`'${query}'的搜索结果`"
+          :desc="`查看 '${query}' 的torrent搜索结果`"
           class="my-3"
         />
       </v-flex>
@@ -117,7 +117,7 @@ export default {
   methods: {
     search() {
       const { query, provider, limit, category } = this;
-      if (!query) return (this.errors = "Query is needed");
+      if (!query) return (this.errors = "需要查询");
       this.loading = true;
       const params = { query, limit, category: category || "All" };
       if (provider && provider.name !== "All") params.provider = provider.name;
@@ -128,7 +128,7 @@ export default {
       searchEngine(params)
         .then(({ data }) => {
           this.searchResults = data;
-          if (data.length === 0) this.errors = "No results for " + this.query;
+          if (data.length === 0) this.errors = this.query + "没有结果";
         })
         .catch(err => {
           console.error(err);
