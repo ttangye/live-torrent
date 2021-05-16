@@ -16,7 +16,7 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "主页",
       component: Home
     },
     {
@@ -36,7 +36,7 @@ export default new Router({
     },
     {
       path: "/movies",
-      name: "movies",
+      name: "观影团",
       component: Movies
     },
     {
@@ -46,12 +46,12 @@ export default new Router({
     },
     {
       path: "/bookmarks",
-      name: "bookmarks",
+      name: "收藏夹",
       component: Bookmarks
     },
     {
       path: "/about",
-      name: "about",
+      name: "关于",
       component: () => import("./views/About.vue")
     },
     {

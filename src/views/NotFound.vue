@@ -2,7 +2,7 @@
   <v-layout fill-height justify-center align-center>
     <v-flex xs12 class="text-xs-center">
       <v-btn color="primary" to="/">
-        <v-icon left>fas fa-home</v-icon>Go to Home
+        <v-icon left>fas fa-home</v-icon>主页
       </v-btn>
     </v-flex>
   </v-layout>

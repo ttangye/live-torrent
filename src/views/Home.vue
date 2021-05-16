@@ -75,16 +75,16 @@
           />
         </v-flex>
         <v-flex xs12 class="text-xs-center mt-5">
-          <a
-            href="https://brave.com/liv970"
-            target="_blank"
-            title="Support us and a faster and safer web by downloading Brave browser"
-          >
-            <img
-              src="/img/brave.png"
-              alt="Proud to support a faster, safer web"
-            />
-          </a>
+<!-- Kouzhao -->
+<ins class="adsbygoogle"
+   style="display:block"
+   data-ad-client="ca-pub-5412472640367197"
+   data-ad-slot="3059612064"
+   data-ad-format="auto"
+   data-full-width-responsive="true"></ins>
+<script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
         </v-flex>
       </v-layout>
     </v-flex>
