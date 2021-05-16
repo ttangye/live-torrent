@@ -21,17 +21,17 @@ export default new Router({
     },
     {
       path: "/explorer",
-      name: "explorer",
+      name: "解析",
       component: Explorer
     },
     {
       path: "/player",
-      name: "player",
+      name: "播放页",
       component: Player
     },
     {
       path: "/search",
-      name: "search",
+      name: "搜索",
       component: Search
     },
     {
@@ -41,7 +41,7 @@ export default new Router({
     },
     {
       path: "/movies/:id",
-      name: "movie",
+      name: "电影详情",
       component: Movie
     },
     {
