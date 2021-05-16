@@ -3,18 +3,18 @@
     <v-layout row wrap>
       <v-flex xs12 mb-5 class="text-xs-center">
         <h1 class="title">
-          <v-icon left>fas fa-bookmark</v-icon>Bookmarks
+          <v-icon left>fas fa-bookmark</v-icon>书签
         </h1>
       </v-flex>
       <v-flex xs12 class="text-xs-center">
         <v-btn @click="$Bookmarks.reset()" color="red" v-if="bookmarks.length">
-          <v-icon left>fas fa-trash</v-icon>Remove All
+          <v-icon left>fas fa-trash</v-icon>清空
         </v-btn>
         <v-btn @click="refresh" color="green">
-          <v-icon left>fas fa-sync</v-icon>Refresh
+          <v-icon left>fas fa-sync</v-icon>刷新
         </v-btn>
         <v-btn @click="share" color="teal">
-          <v-icon left>fas fa-copy</v-icon>Copy
+          <v-icon left>fas fa-copy</v-icon>复制
         </v-btn>
       </v-flex>
       <v-flex xs8 ma-2 v-for="(bookmark, i) in bookmarks" :key="i">
@@ -30,7 +30,7 @@
         </v-btn>
       </v-flex>
       <v-flex v-if="!bookmarks.length" my-5 class="text-xs-center">
-        <h1 class="subheading">No bookmarks</h1>
+        <h1 class="subheading">你还没有保存书签呢</h1>
       </v-flex>
     </v-layout>
   </v-container>
@@ -70,13 +70,13 @@ export default {
       bms = [],
       bmsToAdd = [];
 
-    // make sure that all queries are in form of arrays
+    // 确保所有查询都是数组形式
     if (Array.isArray(bookmark)) bm = bookmark;
     else bm = [bookmark];
     if (Array.isArray(bookmarks)) bms = bookmarks;
     else bms = [bookmarks];
 
-    // add each bookmark into the array of bookmarks
+    // add将每个书签放入书签数组
     bm.filter(a => a).forEach(b => {
       try {
         bmsToAdd.push(JSON.parse(atob(b)));
@@ -85,7 +85,7 @@ export default {
       }
     });
 
-    // add bookmarks in the bookmarks collection into the array of bookmarks
+    // 将书签集合中的书签添加到书签数组中
     bms
       .filter(a => a)
       .forEach(b => {
@@ -102,11 +102,11 @@ export default {
         }
       });
 
-    // add all bookmarks
+    // 添加所有书签
     bmsToAdd.forEach(b => Bookmarks.add(b, false));
     Bookmarks.save();
 
-    // refresh bookmarks
+    // 刷新书签
     this.refresh();
     Bookmarks.on("update", this.refresh);
   }

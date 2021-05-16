@@ -6,29 +6,29 @@ if (process.env.NODE_ENV === "production") {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
       console.log(
-        "App is being served from cache by a service worker.\n" +
-          "For more details, visit https://goo.gl/AFskqB"
+        "应用程序正在由服务工作者从缓存中提供。\n" +
+          "有关更多详细信息，请访问 https://18sui.net"
       );
     },
     registered() {
-      console.log("Service worker has been registered.");
+      console.log("服务人员已注册。");
     },
     cached() {
-      console.log("Content has been cached for offline use.");
+      console.log("内容已缓存以供脱机使用。");
     },
     updatefound() {
-      console.log("New content is downloading.");
+      console.log("正在下载新内容。");
     },
     updated() {
-      console.log("New content is available; please refresh.");
+      console.log("有新内容可用； 请刷新。");
     },
     offline() {
       console.log(
-        "No internet connection found. App is running in offline mode."
+        "找不到互联网连接。 应用正在离线模式下运行。"
       );
     },
     error(error) {
-      console.error("Error during service worker registration:", error);
+      console.error("服务人员注册期间发生错误：", error);
     }
   });
 }

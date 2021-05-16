@@ -20,7 +20,7 @@
         <v-flex xs10 offset-xs1>
           <v-text-field
             v-model="query"
-            label="Looking for something or you have a torrentID"
+            label="搜索或torrentID"
             @keydown.enter="search"
             :error-messages="errors"
             :disabled="loading"
@@ -28,7 +28,7 @@
             light
             :loading="loading"
             persistent-hint
-            hint="torrentID can be torrent magnet, torrent HTTP/HTTPS url or torrent info hash"
+            hint="torrentID可以是magnet磁力链接，BT种子的HTTP/HTTPS网址链接或者是torrent的hash值"
             clearable
             :autofocus="!$vuetify.breakpoint.xsOnly"
           >
@@ -52,33 +52,26 @@
         <v-flex class="text-xs-center mt-5">
           <v-btn
             color="gray"
-            href="https://github.com/Davenchy/live-torrent"
+            href="https://18sui.net"
             target="blank"
           >
-            <v-icon left>fab fa-github</v-icon>Github
-          </v-btn>
-          <v-btn
-            color="gray"
-            href="https://github.com/Davenchy/live-torrent/issues"
-            target="blank"
-          >
-            <v-icon left>fas fa-exclamation-circle</v-icon>Github Issues
+            <v-icon left>fas fa-exclamation-circle</v-icon>关于
           </v-btn>
           <v-btn
             color="blue"
-            href="mailto:firon1222@gmail.com?Subject=Live%20Torrent%20-%20Feedback"
+            href="mailto:all@18sui.net?Subject=绅士云播反馈"
             target="blank"
           >
-            <v-icon left>fas fa-comments</v-icon>Feedback
+            <v-icon left>fas fa-comments</v-icon>联系我
           </v-btn>
         </v-flex>
 
         <v-flex xs10 offset-xs1 class="mt-5">
-          <div class="mb-3">Share Live Torrent:</div>
+          <div class="mb-3">分享：</div>
           <share-buttons
             :url="hostURL"
-            title="Explore, download or watch torrent files online"
-            desc="Live Torrent is a web app to explore, download or watch torrent files online"
+            title="在线浏览，下载或观看磁力链接和BT种子文件"
+            desc="绅士云播是一个Web应用程序，用于在线浏览，下载或观看磁力链接和BT种子文件"
           />
         </v-flex>
         <v-flex xs12 class="text-xs-center mt-5">
@@ -120,7 +113,7 @@ export default {
       const { isEmpty, isTorrentId } = this.validateQuery;
 
       if (isEmpty) {
-        this.errors = "Please enter torrent ID or Search Query";
+        this.errors = "请输入torrentID或者搜索关键词";
         this.loading = false;
       } else if (isTorrentId) {
         this.$router.push({
@@ -140,7 +133,7 @@ export default {
     },
     loadDemo() {
       this.query =
-        "magnet:?xt=urn:btih:08ada5a7a6183aae1e09d831df6748d566095a10&dn=Sintel";
+        "magnet:?xt=urn:btih:08ada5a7a6183aae1e09d831df6748d566095a10";
     },
     uploadTorrent() {
       uploadTorrentFile.run(infoHash => {
@@ -190,7 +183,7 @@ export default {
     }
   },
   created() {
-    document.title = "Live Torrent";
+    document.title = "绅士云播";
     const { query } = this.$route.query;
     if (query) {
       this.query = query;

@@ -12,12 +12,12 @@
 export default {
   name: "notfound",
   created() {
-    document.title = "Live Torrent - Error 404";
+    document.title = "绅士云播 - Error 404";
     this.Swal.fire({
       title: "Error 404",
       text: "Page Not Found!",
       type: "error",
-      confirmButtonText: "Go To Home Page"
+      confirmButtonText: "返回"
     }).then(() => this.$router.push({ name: "home" }));
   }
 };

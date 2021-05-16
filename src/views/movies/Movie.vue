@@ -7,7 +7,7 @@
           <bookmark-button
             v-if="movie"
             :bookmarkInfo="{
-          name: `${movie.title} (${movie.year}) - Movie Page`,
+          name: `${movie.title} (${movie.year}) - 电影页面`,
           id: `movie::${movie.imdb_code}`,
           url: window.location.href
           }"
@@ -37,23 +37,23 @@
           <v-expansion-panel-content>
             <template v-slot:header>
               <div class="title">
-                <v-icon left>fas fa-info-circle</v-icon>Information
+                <v-icon left>fas fa-info-circle</v-icon>信息
               </div>
             </template>
             <v-card>
               <v-card-text>
-                <div>Language: {{ movie.language }}</div>
-                <div>MPA Rating: {{ movie.mpa_rating || 'Unknown' }}</div>
-                <div>IMDB Code: {{ movie.imdb_code }}</div>
-                <div>Year: {{ movie.year }}</div>
-                <div>Rating: {{ movie.rating }} / 10</div>
+                <div>语言: {{ movie.language }}</div>
+                <div>MPA评分: {{ movie.mpa_rating || 'Unknown' }}</div>
+                <div>IMDB码: {{ movie.imdb_code }}</div>
+                <div>发行年份: {{ movie.year }}</div>
+                <div>评分: {{ movie.rating }} / 10</div>
                 <div>
-                  Genres:
+                  体裁:
                   <span v-for="(g, i) in movie.genres" :key="i" class="mx-1">{{ g }}</span>
                 </div>
-                <div>Watching: {{ movie.runtime }}</div>
-                <div>Downloads: {{ movie.download_count }}</div>
-                <div>Uploaded At: {{ movie.date_uploaded }}</div>
+                <div>观看: {{ movie.runtime }}</div>
+                <div>下载: {{ movie.download_count }}</div>
+                <div>上传于: {{ movie.date_uploaded }}</div>
               </v-card-text>
             </v-card>
           </v-expansion-panel-content>
@@ -67,7 +67,7 @@
           <v-expansion-panel-content>
             <template v-slot:header>
               <div class="title">
-                <v-icon left>fas fa-align-left</v-icon>Description
+                <v-icon left>fas fa-align-left</v-icon>描述
               </div>
             </template>
             <v-card>
@@ -84,7 +84,7 @@
           <v-expansion-panel-content>
             <template v-slot:header>
               <div class="title">
-                <v-icon left>fas fa-mask</v-icon>Casts
+                <v-icon left>fas fa-mask</v-icon>演员表
               </div>
             </template>
             <v-card>
@@ -97,7 +97,7 @@
                     </v-list-tile-avatar>
 
                     <v-list-tile-content>
-                      <v-list-tile-title>{{ cast.name }} - IMDB Code: {{ cast.imdb_code }}</v-list-tile-title>
+                      <v-list-tile-title>{{ cast.name }} - IMDB码: {{ cast.imdb_code }}</v-list-tile-title>
                       <v-list-tile-sub-title>{{ cast.character_name }}</v-list-tile-sub-title>
                     </v-list-tile-content>
                   </v-list-tile>
@@ -120,10 +120,10 @@
             </template>
             <v-card>
               <v-card-text>
-                <div>Trailer Code: {{ movie.yt_trailer_code }}</div>
+                <div>YTS码: {{ movie.yt_trailer_code }}</div>
                 <div>
-                  Visit movie on yts from
-                  <a :href="movie.url" target="blank">here</a>.
+                  在YTS上观看
+                  <a :href="movie.url" target="blank">点我</a>.
                 </div>
               </v-card-text>
             </v-card>
@@ -138,7 +138,7 @@
           <v-expansion-panel-content>
             <template v-slot:header>
               <div class="title">
-                <v-icon left>fas fa-share-alt</v-icon>Share
+                <v-icon left>fas fa-share-alt</v-icon>分享
               </div>
             </template>
             <v-card>
@@ -160,13 +160,13 @@
           <v-expansion-panel-content>
             <template v-slot:header>
               <div class="title">
-                <v-icon left>fas fa-closed-captioning</v-icon>Captions
+                <v-icon left>fas fa-closed-captioning</v-icon>字幕
               </div>
             </template>
             <v-card>
               <v-card-text style="text-wrap: wrap;">
-                <div v-if="loadingCaptions">Loading...</div>
-                <div v-else-if="!captions.length">No captions found for this movie.</div>
+                <div v-if="loadingCaptions">加载中...</div>
+                <div v-else-if="!captions.length">找不到这部电影的字幕。</div>
                 <div v-else>
                   <a
                     :href="c.utf8"
@@ -179,15 +179,15 @@
                 </div>
                 <hr />
                 <div>
-                  You can help by making subtitles and uploading it to
+                  您可以制作字幕并将其上传到
                   <a
                     href="https://opensubtitles.org"
                     title="open subtitles"
                   >opensubtitles.org</a>
                 </div>
                 <div>
-                  You can use
-                  <a href="https://amara.org/en/" title="amara subtitle editor">Amara</a> online editor to make amazing subtitles
+                  您可以使用
+                  <a href="https://amara.org/en/" title="amara subtitle editor">Amara</a>在线编辑制作字幕。
                 </div>
               </v-card-text>
             </v-card>
@@ -196,7 +196,7 @@
       </v-flex>
 
       <v-flex xs12 md10 offset-md1 mt-5>
-        <h1 class="title mb-4">Trailer:</h1>
+        <h1 class="title mb-4">预告片：</h1>
         <div class="my-3 text-xs-center">
           <v-btn
             tag="a"
@@ -204,17 +204,17 @@
             :href="`https://www.youtube.com/search?q=${movie.title} ${movie.year} trailer`"
             color="red"
           >
-            <v-icon left>fab fa-youtube</v-icon>Search Youtube for the trailer.
+            <v-icon left>fab fa-youtube</v-icon>在YouTube上搜索预告片。
           </v-btn>
           <v-btn tag="a" target="_blank" :href="trailer" color="red" v-if="trailer">
-            <v-icon left>fab fa-youtube</v-icon>Watch trailer on Youtube
+            <v-icon left>fab fa-youtube</v-icon>在YouTube上观看预告片
           </v-btn>
         </div>
         <div id="player" data-plyr-provider="youtube" :data-plyr-embed-id="trailer" v-if="trailer"></div>
       </v-flex>
 
       <v-flex xs12 mt-5>
-        <h1 class="title mb-4">Screenshots:</h1>
+        <h1 class="title mb-4">截图：</h1>
         <v-carousel>
           <v-carousel-item contain :src="movie.large_screenshot_image1"></v-carousel-item>
           <v-carousel-item contain :src="movie.large_screenshot_image2"></v-carousel-item>
@@ -223,7 +223,7 @@
       </v-flex>
 
       <v-flex xs12 mt-5>
-        <h1 class="subheading">Torrents:</h1>
+        <h1 class="subheading">种子:</h1>
 
         <v-layout raw wrap>
           <v-flex xs12 md6 xl4 v-for="torrent in movie.torrents" :key="torrent.hash">
@@ -260,24 +260,24 @@
                   </template>
                 </v-text-field>
 
-                <v-btn color="green" tag="a" :href="torrent.url">Download (.torrent)</v-btn>
+                <v-btn color="green" tag="a" :href="torrent.url">下载种子(.torrent)</v-btn>
                 <v-btn
                   color="purple"
                   tag="a"
                   :href="`${hostURL}/player?torrentId=${torrent.hash}&caption=imdbid::${movie.imdb_code}`"
-                >Watch</v-btn>
+                >观看视频</v-btn>
                 <v-btn
                   color="blue"
                   tag="a"
                   :href="`${hostURL}/explorer?torrentId=${torrent.hash}`"
-                >Explore</v-btn>
+                >在线解析</v-btn>
                 <v-btn
                   color="orange"
                   tag="a"
                   target="_blank"
                   :download="`${movie.slug}.mp4`"
                   :href="`${hostURL}/api/torrent/serve/${torrent.hash}/:video`"
-                >Download Movie (.mp4)</v-btn>
+                >下载视频(.mp4)</v-btn>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -285,7 +285,7 @@
       </v-flex>
 
       <v-flex xs12 mt-5 v-if="movie.suggestedMovies">
-        <h1 class="subheading">Suggested Movies:</h1>
+        <h1 class="subheading">猜你喜欢：</h1>
 
         <v-layout raw wrap mt-5>
           <v-flex
@@ -345,7 +345,7 @@ export default {
   },
   watch: {
     movie(n) {
-      document.title = "Live Torrent - Movie - " + n.title_long;
+      document.title = "绅士云播 - 电影 - " + n.title_long;
     }
   },
   created() {

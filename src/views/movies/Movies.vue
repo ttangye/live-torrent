@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-layout raw wrap xs12>
       <v-flex xs12 class="my-5 text-xs-center">
-        <h1>Torrent Movies</h1>
+        <h1>最新电影Torrent</h1>
       </v-flex>
 
       <v-flex xs12>
@@ -79,7 +79,7 @@
               ]"
             >
               <template v-slot:prepend-inner>
-                <div class="select-text">Order:</div>
+                <div class="select-text">类型:</div>
               </template>
             </v-select>
           </v-flex>
@@ -98,7 +98,7 @@
               hide-details
               single-line
               :items="[
-                { text: 'All', value: 'all' },
+                { text: '全部', value: 'all' },
                 { text: 'Action', value: 'action' },
                 { text: 'Adventure', value: 'adventure' },
                 { text: 'Animation', value: 'animation' },
@@ -128,7 +128,7 @@
               ]"
             >
               <template v-slot:prepend-inner>
-                <div class="select-text">Genre:</div>
+                <div class="select-text">剧情:</div>
               </template>
             </v-select>
           </v-flex>
@@ -147,12 +147,12 @@
               hide-details
               single-line
               :items="[
-                { text: 'Ascending', value: 'asc' },
-                { text: 'Descending', value: 'desc' }
+                { text: '升序', value: 'asc' },
+                { text: '降序', value: 'desc' }
               ]"
             >
               <template v-slot:prepend-inner>
-                <div class="select-text">Sort:</div>
+                <div class="select-text">排序:</div>
               </template>
             </v-select>
           </v-flex>

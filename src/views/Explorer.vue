@@ -5,12 +5,12 @@
         <v-card color="#445064">
           <v-sheet class="pa-3" color="#445064">
             <div class="title mb-3">
-              {{ torrentInfo.name }} - {{ torrentInfo.size | size }} - Peers:
+              {{ torrentInfo.name }} - {{ torrentInfo.size | size }} - 链接:
               {{ torrentInfo.peers }}
               <bookmark-button
                 v-if="torrentInfo"
                 :bookmarkInfo="{
-                  name: `${torrentInfo.name} - Explorer Page`,
+                  name: `${torrentInfo.name} - 解析页面`,
                   id: 'explorer::' + torrentInfo.infoHash,
                   url: shareURL
                 }"
@@ -23,7 +23,7 @@
             <v-text-field
               readonly
               flat
-              label="Info Hash"
+              label="Hash值"
               :value="torrentInfo.infoHash"
               prepend-icon="info"
               color="blue"
@@ -39,7 +39,7 @@
               color="green"
               readonly
               flat
-              label="Share Link"
+              label="分享链接"
               :value="shareURL"
               prepend-icon="share"
             >
@@ -52,14 +52,14 @@
 
             <share-buttons
               :url="shareURL"
-              :title="`Explore '${torrentInfo.name}' torrent file`"
-              desc="Explore this torrent file"
+              :title="`解析 '${torrentInfo.name}' 种子的文件列表`"
+              desc="探索这个种子文件"
             />
 
             <v-menu offset-y>
               <template v-slot:activator="{ on }">
                 <v-btn color="blue" class="right" dark v-on="on">
-                  Download
+                  下载
                   <v-icon dark right>arrow_drop_down</v-icon>
                 </v-btn>
               </template>
@@ -79,10 +79,10 @@
 
             <div class="clearfix"></div>
 
-            <div class="mt-3 subheading">Files:</div>
+            <div class="mt-3 subheading">文件:</div>
 
             <v-text-field
-              placeholder="looking for something..."
+              placeholder="搜索..."
               v-model="search"
               clearable
               transition
@@ -261,8 +261,8 @@ export default {
           console.error(err);
           this.Swal.fire({
             type: "error",
-            title: "Reload Failed!!",
-            confirmButtonText: "Go To Home"
+            title: "重新加载失败！",
+            confirmButtonText: "返回"
           }).then(() => this.$router.push({ name: "home" }));
         })
         .finally(() => {
@@ -298,14 +298,14 @@ export default {
     const id = this.$route.query.torrentId;
 
     const setTitle = () =>
-      (document.title = "Live Torrent - Explorer - " + this.torrentInfo.name);
+      (document.title = "绅士云播 - 解析列表 - " + this.torrentInfo.name);
 
     const invalidTorrentId = () => {
       this.Swal.fire({
         type: "error",
-        title: "Invalid Torrent ID",
-        text: "Sorry, that torrent id is invalid",
-        confirmButtonText: "Go To Home"
+        title: "无效的Torrent ID",
+        text: "抱歉，该Torrent ID无效",
+        confirmButtonText: "返回"
       }).then(() => this.$router.push({ name: "home" }));
     };
 
