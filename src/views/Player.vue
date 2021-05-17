@@ -7,7 +7,7 @@
           <bookmark-button
             v-if="file"
             :bookmarkInfo="{
-            name: `${file.name} - 视频播放`,
+            name: `${file.name} - 视频播放页`,
             id: 'player::' + torrentInfo.infoHash + '::' + file.path,
             url: shareURL
           }"
@@ -31,7 +31,7 @@
             <v-expansion-panel-content style="background: #20252c !important">
               <template v-slot:header>
                 <div class="title">
-                  <v-icon left>fas fa-share-alt</v-icon>Share
+                  <v-icon left>fas fa-share-alt</v-icon>分享
                 </div>
               </template>
               <v-card color="#2b313b">
@@ -67,7 +67,7 @@
             type="error"
             class="white--text"
             light
-          >Failed to download captions.</v-alert>
+          >无法下载字幕。</v-alert>
           <v-progress-linear v-if="loading" indeterminate></v-progress-linear>
           <video
             id="player"
@@ -107,7 +107,7 @@
                     <h1 class="title mb-3">上传字幕</h1>
                     <input
                       type="file"
-                      placeholder="Upload Caption"
+                      placeholder="上载标题"
                       @change="uploadCaption"
                       accept=".vtt, .srt"
                     />
@@ -125,7 +125,7 @@
                   <v-flex class="my-4" v-if="player && captions.length">
                     <h1 class="title mb-3">修正字幕时间</h1>
                     <v-text-field
-                      label="Caption Delay"
+                      label="字幕延迟"
                       type="number"
                       v-model="captionDelay"
                       min="0"
@@ -140,7 +140,7 @@
                     <v-btn
                       color="green"
                       @click="captionDelay += parseFloat(timeB - timeA)"
-                    >Fix Caption Timing</v-btn>
+                    >修正字幕计时</v-btn>
                   </v-flex>
                   <v-flex v-if="captions.length">
                     <h1 class="title">载入字幕</h1>

@@ -21,7 +21,7 @@
                 <bookmark-button
                   class="prevent-click"
                   :bookmarkInfo="{
-                    name: `${movie.title} (${movie.year}) - Movie Page`,
+                    name: `${movie.title} (${movie.year}) - 观影团`,
                     id: `movie::${movie.imdb_code}`,
                     url: `${hostURL}/movies/${movie.id}`
                   }"
@@ -35,7 +35,7 @@
                 offset-xs6
                 v-if="movie.year === new Date().getUTCFullYear()"
               >
-                <v-chip color="red" dark>New</v-chip>
+                <v-chip color="red" dark>新</v-chip>
               </v-flex>
             </v-layout>
           </v-card-text>

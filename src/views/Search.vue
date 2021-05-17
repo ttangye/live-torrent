@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex xs12>
         <v-text-field
-          placeholder="Looking for..."
+          placeholder="请输入关键词..."
           solo
           light
           :loading="loading"
@@ -50,7 +50,7 @@
       </v-flex>
 
       <v-flex xs12 v-if="query && searchResults.length">
-        <div class="subheading">Share:</div>
+        <div class="subheading">分享:</div>
 
         <share-buttons
           :url="
@@ -80,8 +80,8 @@
               </div>
               <v-layout row>
                 <v-flex xs6>
-                  <div class="caption">Size: {{ result.size }}</div>
-                  <div class="caption">Hash: {{ result.hash }}</div>
+                  <div class="caption">大小: {{ result.size }}</div>
+                  <div class="caption">Hash值: {{ result.hash }}</div>
                 </v-flex>
                 <v-flex xs6 class="text-xs-right">
                   <div class="caption grey--text text--lighten-1">{{ result.time }}</div>

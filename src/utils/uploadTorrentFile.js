@@ -32,13 +32,13 @@ class TorrentFileUploader {
 
     if (files.length === 0) return;
     else if (files.length !== 1)
-      Swal.fire("Upload Failed!", "Please select torrent file", "error");
+      Swal.fire("上传失败！", "所选文件不是种子文件", "错误");
 
     if (files[0].type !== "application/x-bittorrent")
       Swal.fire(
-        "Upload Failed!",
-        "The selected file is not a torrent file",
-        "error"
+        "上传失败！",
+        "所选文件不是种子文件",
+        "错误"
       );
 
     this._readTorrentFile(files[0]);
@@ -50,9 +50,9 @@ class TorrentFileUploader {
       if (err) {
         console.error(err);
         Swal.fire(
-          "Upload Failed!",
-          "Failed to parse the torrent file",
-          "error"
+          "上传失败！",
+          "所选文件不是种子文件",
+          "错误"
         );
       } else {
         this.onupload(torrent.infoHash);

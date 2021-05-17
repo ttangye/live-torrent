@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-layout raw wrap xs12>
       <v-flex xs12 class="my-5 text-xs-center">
-        <h1>最新电影Torrent</h1>
+        <h1>观影团 - 最新电影库</h1>
       </v-flex>
 
       <v-flex xs12>
@@ -16,7 +16,7 @@
           item-text="title"
           loader-height="5"
           item-value="title"
-          placeholder="Looking for"
+          placeholder="输入关键词。。。"
           :disabled="loading"
           :items="suggestions"
           :loading="thinking || loading"
@@ -68,14 +68,14 @@
               }"
               single-line
               :items="[
-                { text: 'Title', value: 'title' },
-                { text: 'Year', value: 'year' },
-                { text: 'Rating', value: 'rating' },
-                { text: 'Peers', value: 'peers' },
-                { text: 'Seeds', value: 'seeds' },
-                { text: 'Downloads', value: 'download_count' },
-                { text: 'Popularity', value: 'likes_count' },
-                { text: 'Upload Date', value: 'date_added' }
+                { text: '标题', value: 'title' },
+                { text: '年份', value: 'year' },
+                { text: '评分', value: 'rating' },
+                { text: '同行', value: 'peers' },
+                { text: '种子', value: 'seeds' },
+                { text: '下载', value: 'download_count' },
+                { text: '人气', value: 'likes_count' },
+                { text: '上传时间', value: 'date_added' }
               ]"
             >
               <template v-slot:prepend-inner>
@@ -99,32 +99,32 @@
               single-line
               :items="[
                 { text: '全部', value: 'all' },
-                { text: 'Action', value: 'action' },
-                { text: 'Adventure', value: 'adventure' },
-                { text: 'Animation', value: 'animation' },
-                { text: 'Biography', value: 'biography' },
-                { text: 'Comedy', value: 'comedy' },
-                { text: 'Crime', value: 'crime' },
-                { text: 'Documentary', value: 'documentary' },
-                { text: 'Drama', value: 'drama' },
-                { text: 'Family', value: 'family' },
-                { text: 'Fantasy', value: 'fantasy' },
-                { text: 'Film-Noir', value: 'film-noir' },
-                { text: 'Game-Show', value: 'game-show' },
-                { text: 'History', value: 'history' },
-                { text: 'Horror', value: 'horror' },
-                { text: 'Music', value: 'music' },
-                { text: 'Musical', value: 'musical' },
-                { text: 'Mystery', value: 'mystery' },
-                { text: 'News', value: 'news' },
-                { text: 'Reality Tv', value: 'reality-tv' },
-                { text: 'Romance', value: 'romance' },
-                { text: 'Sci-Fi', value: 'sci-fi' },
-                { text: 'Sport', value: 'sport' },
-                { text: 'Talk-Show', value: 'talk-show' },
-                { text: 'Thriller', value: 'thriller' },
-                { text: 'War', value: 'war' },
-                { text: 'Western', value: 'western' }
+                { text: '动作', value: 'action' },
+                { text: '冒险', value: 'adventure' },
+                { text: '动画', value: 'animation' },
+                { text: '传记', value: 'biography' },
+                { text: '喜剧', value: 'comedy' },
+                { text: '犯罪', value: 'crime' },
+                { text: '犯罪纪录片', value: 'documentary' },
+                { text: '戏剧', value: 'drama' },
+                { text: '家庭', value: 'family' },
+                { text: '幻想', value: 'fantasy' },
+                { text: '黑色电影', value: 'film-noir' },
+                { text: '游戏节目', value: 'game-show' },
+                { text: '历史', value: 'history' },
+                { text: '恐怖', value: 'horror' },
+                { text: '音乐', value: 'music' },
+                { text: '音乐剧', value: 'musical' },
+                { text: '神秘', value: 'mystery' },
+                { text: '新闻', value: 'news' },
+                { text: '真人秀', value: 'reality-tv' },
+                { text: '浪漫', value: 'romance' },
+                { text: '科幻', value: 'sci-fi' },
+                { text: '体育', value: 'sport' },
+                { text: '脱口秀', value: 'talk-show' },
+                { text: '惊悚', value: 'thriller' },
+                { text: '战争', value: 'war' },
+                { text: '西部', value: 'western' }
               ]"
             >
               <template v-slot:prepend-inner>
@@ -162,10 +162,10 @@
           </v-flex>
           <v-flex xs12 class="text-xs-center">
             <v-btn color="green" @click="search(true)" :disabled="loading">
-              <v-icon left>fas fa-search</v-icon>Search
+              <v-icon left>fas fa-search</v-icon>搜索
             </v-btn>
             <v-btn color="blue" @click="random" :disabled="loading">
-              <v-icon left>fas fa-dice</v-icon>Random
+              <v-icon left>fas fa-dice</v-icon>手气不错
             </v-btn>
           </v-flex>
         </v-layout>
@@ -205,7 +205,7 @@
         </v-layout>
       </v-flex>
       <v-flex class="text-xs-center" v-else>
-        <h1 class="title">No Results.</h1>
+        <h1 class="title">没结果。</h1>
       </v-flex>
       <v-flex xs12 sm6 offset-sm3 v-if="movies" class="text-xs-center mb-5">
         <v-layout row>

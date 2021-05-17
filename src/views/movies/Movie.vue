@@ -236,7 +236,7 @@
               </v-card-title>
 
               <v-card-text>
-                Seeds/Peers: {{ torrent.seeds }}/{{ torrent.peers }}
+                播种/同行: {{ torrent.seeds }}/{{ torrent.peers }}
                 <v-text-field label="Hash" :value="torrent.hash" readonly>
                   <template v-slot:append>
                     <v-btn icon @click="$copy(torrent.hash)">
@@ -345,7 +345,7 @@ export default {
   },
   watch: {
     movie(n) {
-      document.title = "绅士云播 - 电影 - " + n.title_long;
+      document.title = "绅士云播 - 电影详情页 - " + n.title_long;
     }
   },
   created() {

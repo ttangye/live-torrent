@@ -88,7 +88,7 @@ export const loadURL = caption => {
     })
     .catch(err => {
       console.error(err);
-      console.error("Cannot load this caption:", caption);
+      console.error("无法加载此标题：", caption);
       return undefined;
     });
 };

@@ -34,12 +34,12 @@
             </v-list-tile-avatar>
 
             <v-list-tile-content>
-              <v-list-tile-title>Live Torrent</v-list-tile-title>
+              <v-list-tile-title>绅士云播</v-list-tile-title>
             </v-list-tile-content>
 
             <v-list-tile-action>
               <v-btn icon @click.stop="drawer = !drawer" v-if="small">
-                <v-icon>close</v-icon>
+                <v-icon>关闭</v-icon>
               </v-btn>
             </v-list-tile-action>
           </v-list-tile>
@@ -70,7 +70,7 @@
           </v-list-tile-action>
 
           <v-list-tile-content>
-            <v-list-tile-title>Go Back</v-list-tile-title>
+            <v-list-tile-title>返回</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
@@ -80,7 +80,7 @@
           </v-list-tile-action>
 
           <v-list-tile-content>
-            <v-list-tile-title>Go Forward</v-list-tile-title>
+            <v-list-tile-title>前进</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -95,10 +95,10 @@ export default {
       drawer: true,
       mini: false,
       items: [
-        { title: "Home", icon: "fas fa-home", path: "/" },
-        { title: "Movies", icon: "fas fa-film", path: "/movies" },
-        { title: "Bookmarks", icon: "fas fa-bookmark", path: "/bookmarks" },
-        { title: "About", icon: "info", path: "/about" }
+        { title: "主页", icon: "fas fa-home", path: "/" },
+        { title: "观影团", icon: "fas fa-film", path: "/movies" },
+        { title: "收藏夹", icon: "fas fa-bookmark", path: "/bookmarks" },
+        { title: "关于", icon: "info", path: "/about" }
       ]
     };
   },
